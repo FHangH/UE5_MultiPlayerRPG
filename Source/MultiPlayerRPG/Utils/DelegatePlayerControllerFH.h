@@ -1,0 +1,22 @@
+﻿#pragma once
+
+// Controller Input
+DECLARE_DELEGATE_OneParam(FHDelegateFHMoveForward, float);
+DECLARE_DELEGATE_OneParam(FHDelegateFHMoveRight, float);
+DECLARE_DELEGATE_OneParam(FHDelegateFHPitchCamera, float);
+DECLARE_DELEGATE_OneParam(FHDelegateFHYawCamera, float);
+DECLARE_DELEGATE(FHDelegateFHJump);
+DECLARE_DELEGATE(FHDelegateFHStopJumping);
+DECLARE_DELEGATE(FHDelegateFHRun);
+DECLARE_DELEGATE(FHDelegateFHDodge);
+DECLARE_DELEGATE(FHDelegateFHLeftMouseKey);
+DECLARE_DELEGATE(FHDelegateFHRightMouseKey);
+DECLARE_DELEGATE(FHDelegateFHTableKey);
+DECLARE_DELEGATE(FHDelegateFHKeepDownAltKey);
+DECLARE_DELEGATE(FHDelegateFHInteract);
+DECLARE_DELEGATE(FHDelegateFHQKey);
+DECLARE_DELEGATE(FHDelegateFHEKey);
+DECLARE_DELEGATE(FHDelegateFHNum1Key);
+DECLARE_DELEGATE(FHDelegateFHNum2Key);
+DECLARE_DELEGATE(FHDelegateFHNum3Key);
+DECLARE_DELEGATE(FHDelegateFHNum4Key);
