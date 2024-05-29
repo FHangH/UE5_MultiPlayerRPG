@@ -34,4 +34,7 @@ public:
 	 */
 	static FString UpdateTableSetColumnValueByConditionSqlQuery(
 		const FString TableName, const FString SetWhatAndValue, const FString Condition);
+
+	static FString UpdateTableSetColumnAllValuesSqlQuery(
+		const FString TableName, const FString SetWhatAndValue, const FString Condition);
 };

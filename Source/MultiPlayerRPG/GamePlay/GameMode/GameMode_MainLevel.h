@@ -20,6 +20,7 @@ protected:
 	virtual void BeginPlay() override;
 	virtual void PostLogin(APlayerController* NewPlayer) override;
 	virtual void Logout(AController* Exiting) override;
+	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 	virtual void Destroyed() override;
 
 /* My Code */
@@ -48,4 +49,9 @@ public:
 	void FH_UpdateUserLoginStatusByPC(APlayerController_FH* PC, const bool IsLogin);
 	UFUNCTION()
 	void FH_Logout(APlayerController_FH* PlayerController_Fh);
+
+	UFUNCTION()
+	void FH_ClearAllPlayerLoginStatus();
+
+	
 };

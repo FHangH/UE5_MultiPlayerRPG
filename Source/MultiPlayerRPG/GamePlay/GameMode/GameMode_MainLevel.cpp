@@ -3,6 +3,7 @@
 #include "MultiPlayerRPG/GamePlay/PlayerController/PlayerController_FH.h"
 #include "MultiPlayerRPG/GamePlay/PlayerState/PlayerState_FH.h"
 #include "MultiPlayerRPG/GamePlay/GameInstance/GameInstanceRPG.h"
+#include "MultiPlayerRPG/Utils/MySqlUtil.h"
 
 AGameMode_MainLevel::AGameMode_MainLevel()
 {
@@ -53,9 +54,18 @@ void AGameMode_MainLevel::Logout(AController* Exiting)
 	Super::Logout(Exiting);
 }
 
+void AGameMode_MainLevel::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+
+	FH_ClearAllPlayerLoginStatus();
+}
+
 void AGameMode_MainLevel::Destroyed()
 {
 	Super::Destroyed();
+
+	FH_ClearAllPlayerLoginStatus();
 }
 
 /* My Code */
@@ -78,5 +88,21 @@ void AGameMode_MainLevel::FH_Logout(APlayerController_FH* PlayerController_Fh)
 	{
 		Fh_MapPlayerController.Remove(PlayerController_Fh->GetUniqueID());
 		PlayerController_Fh->FH_ClearUpdateLocationTimer();
+	}
+}
+
+void AGameMode_MainLevel::FH_ClearAllPlayerLoginStatus()
+{
+	Fh_GameInstance = Fh_GameInstance == nullptr ? Cast<UGameInstanceRPG>(GetGameInstance()) : Fh_GameInstance;
+	if (Fh_GameInstance)
+	{
+		Connector = Connector == nullptr ? Fh_GameInstance->FH_GetMySQLConnector() : Connector;
+		if (Connector)
+		{
+			const auto SqlQuery = 
+			MySqlUtil::UpdateTableSetColumnAllValuesSqlQuery(
+				FString("UserInfo"), FString("UserIsLogin=0"), FString("UserIsLogin=1"));
+			UBPFuncLib_FHSQL::ActionOnTableData(Connector, SqlQuery);
+		}
 	}
 }

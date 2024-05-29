@@ -186,7 +186,7 @@ bool UBPFuncLib_FHSQL::SelectOnTableGetWhatByMultiCondition(UFH_ConnectionObject
 	FString& ResStr)
 {
 	// SELECT UserID FROM UserInfo WHERE UserName='' AND UserEmail='';
-	if (!ConnectionObject || !ConnectionObject->Fh_ConnMysql){return false;}
+	if (!ConnectionObject || !ConnectionObject->Fh_ConnMysql) { return false; }
 	const std::string m_SqlQuery(TCHAR_TO_UTF8(*SqlQuery));
 	if (!mysql_query(ConnectionObject->Fh_ConnMysql, m_SqlQuery.c_str()))
 	{

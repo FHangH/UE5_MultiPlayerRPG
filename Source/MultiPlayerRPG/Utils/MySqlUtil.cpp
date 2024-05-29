@@ -76,3 +76,11 @@ FString MySqlUtil::UpdateTableSetColumnValueByConditionSqlQuery(const FString Ta
 	// UPDATE PlayerInfo SET PlayerWeaponIDSet='(1,2)' WHERE UserID=1000;
 	return FString::Printf(TEXT("UPDATE %s SET %s WHERE %s;"), *TableName, *SetWhatAndValue, *Condition);
 }
+
+FString MySqlUtil::UpdateTableSetColumnAllValuesSqlQuery(const FString TableName, const FString SetWhatAndValue,
+	const FString Condition)
+{
+	// UPDATE UserInfo SET UserIsLogin=0 WHERE UserIsLogin=1;
+	return FString::Printf(TEXT("UPDATE %s SET %s WHERE %s;"), *TableName, *SetWhatAndValue, *Condition);
+}
+

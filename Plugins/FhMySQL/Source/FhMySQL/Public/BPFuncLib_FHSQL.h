@@ -57,7 +57,7 @@ public:
 	static bool SelectOnTableToMap(UFH_ConnectionObject* ConnectionObject, FString SqlQuery, FResArray& ResArray);
 
 	/*
-	 * 3.0 Select => Query a return value based on a condition
+	 * 3.0
 	 */
 	UFUNCTION(BlueprintCallable, Category="MySQL|Utils")
 	static bool SelectOnTableGetWhatByCondition(UFH_ConnectionObject* ConnectionObject, FString TableName,
@@ -66,8 +66,8 @@ public:
 	/*
 	 * 3.1 Select => Query a return value based on multiple conditions
 	 */
-	UFUNCTION(BlueprintCallable, Category="MySQL|Utils")
-	static bool SelectOnTableGetWhatByMultiCondition(UFH_ConnectionObject* ConnectionObject, FString SqlQuery, FString& ResStr);
+	UFUNCTION(BlueprintCallable, Category = "MySQL|Utils")
+		static bool SelectOnTableGetWhatByMultiCondition(UFH_ConnectionObject* ConnectionObject, FString SqlQuery, FString& ResStr);
 	
 	/*
 	 * Connection == MySQL Object
@@ -143,6 +143,7 @@ public:
 	UFUNCTION(BlueprintPure, Category="MySQL|Utils")
 	static FString DeleteByWhereFormatSqlQuery(FString TableName, FString WhereName, FString WhereSymbol, FString WhereValue);
 	
+
 	/*
 	 * TableName = DataBase TableName
 	 * @return FString = MySQL Select Query -> Select
